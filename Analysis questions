@@ -1,0 +1,46 @@
+1. which platform are users tweeting from most often?
+
+
+MATCH (t:Tweet)-[:USING]->(s:Source)
+RETURN s.name as Source, count(t) as Count
+ORDER BY Count DESC
+LIMIT 5
+
+2. Which hashtags occur most frequently?
+   What are the most tweeted words
+
+MATCH (t:Tweet)<-[:TAGS]-(h:Hashtag)
+RETURN h.name AS Hashtag, COUNT(t) AS Count
+ORDER BY Count DESC
+LIMIT 5
+
+
+3. Which tweet has been retweeted the most, and who posted it?
+   Who is most popular on Twitter (based on frequency of retweets)
+
+MATCH (:Tweet)-[:RETWEETS]->(t:Tweet)
+WITH t, COUNT(*) AS Retweets
+ORDER BY Retweets DESC
+LIMIT 1
+MATCH (u:User)-[:POSTS]->(t)
+RETURN u.screen_name AS User, t.text AS Tweet, Retweets
+
+
+4. What are the top 5 languages in which the tweets are written 
+
+
+
+5. What time of the day do people tweet most (within a specific timeframe; 
+       considering time difference over global locations) 
+
+
+6. Which other topics could we recommend for a specific user? 
+
+MATCH (u:User {screen_name:"D0456Len"})-[:POSTS]->(tweet)
+    <-[:TAGS]-(tag1:Hashtag)-[:TAGS]->(tweet2)<-[:TAGS]-(tag2:Hashtag)
+WHERE NOT (u)-[:POSTS]->()<-[:TAGS]-(tag2)
+RETURN tag2.name as Topics, count(*) as Count
+ORDER BY count(*) DESC LIMIT 5
+
+
+
