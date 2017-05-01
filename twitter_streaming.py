@@ -574,7 +574,7 @@ while True:
 	
 	try:
 		twitterStream = Stream(auth, MyStreamListener(limit_num, neo4j_num, extract_num))
-		twitterStream.sample(languages=['en'])
+		twitterStream.sample()
 	except KeyboardInterrupt:
 		save_message('Interrupt')
 		# Or however you want to exit this loop
