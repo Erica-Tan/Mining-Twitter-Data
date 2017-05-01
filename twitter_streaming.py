@@ -9,26 +9,21 @@ from tweepy.streaming import StreamListener
 
 
 query = """
-WITH {json} AS t
+UNWIND {json} AS t
 MERGE (tweet:Tweet {id:t.id}) ON CREATE
 SET tweet.created_at = t.created_at,
-tweet.id_str = t.id_str,
 tweet.text = t.text,
 tweet.truncated = t.truncated,
-tweet.coordinates = t.coordinates.coordinates,
-tweet.coordinates_tppe = t.coordinates.type,
 tweet.retweet_count = t.retweet_count,
 tweet.favorite_count = t.favorite_count,
 tweet.favorited = t.favorited,
 tweet.retweeted = t.retweeted,
 tweet.filter_level = t.filter_level,
 tweet.lang = t.lang,
-tweet.possibly_sensitive = t.possibly_sensitive,
-tweet.timestamp_ms = t.timestamp_ms
+tweet.possibly_sensitive = t.possibly_sensitive
 
 MERGE (user:User {id:t.user.id}) ON CREATE
-SET user.id_str = t.user.id_str,
-user.name = t.user.name,
+SET user.name = t.user.name,
 user.screen_name = t.user.screen_name,
 user.location = t.user.location,
 user.url = t.user.url,
@@ -104,29 +99,22 @@ FOREACH (l IN t.entities.urls |
 
 
 
-
-
 FOREACH (qt IN t.quoted_status |
     MERGE (qtweet:Tweet {id:qt.id}) ON CREATE
     SET qtweet.created_at = qt.created_at,
-    qtweet.id_str = qt.id_str,
     qtweet.text = qt.text,
     qtweet.truncated = qt.truncated,
-    qtweet.coordinates = qt.coordinates.coordinates,
-    qtweet.coordinates_tppe = qt.coordinates.type,
     qtweet.retweet_count = qt.retweet_count,
     qtweet.favorite_count = qt.favorite_count,
     qtweet.favorited = qt.favorited,
     qtweet.retweeted = qt.retweeted,
     qtweet.filter_level = qt.filter_level,
     qtweet.lang = qt.lang,
-    qtweet.possibly_sensitive = qt.possibly_sensitive,
-    qtweet.timestamp_ms = qt.timestamp_ms
+    qtweet.possibly_sensitive = qt.possibly_sensitive
     MERGE (tweet)-[:QUOTES]->(qtweet)
 
     MERGE (quser:User {id:qt.user.id}) ON CREATE
-    SET quser.id_str = qt.user.id_str,
-    quser.name = qt.user.name,
+    SET quser.name = qt.user.name,
     quser.screen_name = qt.user.screen_name,
     quser.location = qt.user.location,
     quser.url = qt.user.url,
@@ -204,24 +192,19 @@ FOREACH (qt IN t.quoted_status |
 FOREACH (rt IN t.retweeted_status |
     MERGE (rtweet:Tweet {id:rt.id}) ON CREATE
     SET rtweet.created_at = rt.created_at,
-    rtweet.id_str = rt.id_str,
     rtweet.text = rt.text,
     rtweet.truncated = rt.truncated,
-    rtweet.coordinates = rt.coordinates.coordinates,
-    rtweet.coordinates_tppe = rt.coordinates.type,
     rtweet.retweet_count = rt.retweet_count,
     rtweet.favorite_count = rt.favorite_count,
     rtweet.favorited = rt.favorited,
     rtweet.retweeted = rt.retweeted,
     rtweet.filter_level = rt.filter_level,
     rtweet.lang = rt.lang,
-    rtweet.possibly_sensitive = rt.possibly_sensitive,
-    rtweet.timestamp_ms = rt.timestamp_ms
+    rtweet.possibly_sensitive = rt.possibly_sensitive
     MERGE (tweet)-[:RETWEETS]->(rtweet)
 
     MERGE (ruser:User {id:rt.user.id}) ON CREATE
-    SET ruser.id_str = rt.user.id_str,
-    ruser.name = rt.user.name,
+    SET ruser.name = rt.user.name,
     ruser.screen_name = rt.user.screen_name,
     ruser.location = rt.user.location,
     ruser.url = rt.user.url,
@@ -294,6 +277,7 @@ FOREACH (rt IN t.retweeted_status |
         )
     )
 )
+
 
 
 WITH t as t
