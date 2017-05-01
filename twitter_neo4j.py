@@ -79,8 +79,7 @@ FOREACH (p IN t.place |
     place.name = p.name,
     place.full_name = p.full_name,
     place.country_code = p.country_code,
-    place.country = p.country,
-    place.coordinates_type = p.bounding_box.type
+    place.country = p.country
     MERGE (place)-[:PLACES]->(tweet)
 )
 
@@ -174,8 +173,7 @@ FOREACH (qt IN t.quoted_status |
         place.name = p.name,
         place.full_name = p.full_name,
         place.country_code = p.country_code,
-        place.country = p.country,
-        place.coordinates_type = p.bounding_box.type
+        place.country = p.country
         MERGE (place)-[:PLACES]->(tweet)
     )
 
@@ -271,8 +269,7 @@ FOREACH (rt IN t.retweeted_status |
         place.name = p.name,
         place.full_name = p.full_name,
         place.country_code = p.country_code,
-        place.country = p.country,
-        place.coordinates_type = p.bounding_box.type
+        place.country = p.country
         MERGE (place)-[:PLACES]->(tweet)
     )
 

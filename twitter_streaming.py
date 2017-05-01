@@ -82,8 +82,7 @@ FOREACH (p IN t.place |
     place.name = p.name,
     place.full_name = p.full_name,
     place.country_code = p.country_code,
-    place.country = p.country,
-    place.coordinates_type = p.bounding_box.type
+    place.country = p.country
     MERGE (place)-[:PLACES]->(tweet)
 )
 
@@ -179,8 +178,7 @@ FOREACH (qt IN t.quoted_status |
         place.name = p.name,
         place.full_name = p.full_name,
         place.country_code = p.country_code,
-        place.country = p.country,
-        place.coordinates_type = p.bounding_box.type
+        place.country = p.country
         MERGE (place)-[:PLACES]->(tweet)
     )
 
@@ -276,8 +274,7 @@ FOREACH (rt IN t.retweeted_status |
         place.name = p.name,
         place.full_name = p.full_name,
         place.country_code = p.country_code,
-        place.country = p.country,
-        place.coordinates_type = p.bounding_box.type
+        place.country = p.country
         MERGE (place)-[:PLACES]->(tweet)
     )
 
@@ -441,9 +438,9 @@ class MyStreamListener (StreamListener):
 		# format source
 		source_url = source_name = ''
 		if 'source' in tweet :
-			source_info = tweet['source'].replace('\u003ca href="', '')
+			source_info = tweet['source'].replace('<a href="', '')
 			source_info = source_info.replace('" rel="nofollow"', '')
-			source_info = source_info.replace('\u003c/a\u003e', '')
+			source_info = source_info.replace('</a>', '')
 			source_info = source_info.split('>')
 			source_url, source_name = source_info[0], source_info[1]
 
@@ -478,9 +475,9 @@ class MyStreamListener (StreamListener):
 			source_url = source_name = ''
 			
 			if 'source' in retweeted_status :
-				source_info = retweeted_status['source'].replace('\u003ca href="', '')
+				source_info = retweeted_status['source'].replace('<a href="', '')
 				source_info = source_info.replace('" rel="nofollow"', '')
-				source_info = source_info.replace('\u003c/a\u003e', '')
+				source_info = source_info.replace('</a>', '')
 				source_info = source_info.split('>')
 				source_url, source_name = source_info[0], source_info[1]
 
@@ -517,9 +514,9 @@ class MyStreamListener (StreamListener):
 			source_url = source_name = ''
 			
 			if 'source' in quoted_status :
-				source_info = quoted_status['source'].replace('\u003ca href="', '')
+				source_info = quoted_status['source'].replace('<a href="', '')
 				source_info = source_info.replace('" rel="nofollow"', '')
-				source_info = source_info.replace('\u003c/a\u003e', '')
+				source_info = source_info.replace('</a>', '')
 				source_info = source_info.split('>')
 				source_url, source_name = source_info[0], source_info[1]
 
