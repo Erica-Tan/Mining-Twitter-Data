@@ -419,30 +419,36 @@ class MyStreamListener (StreamListener):
 			f.write(symbol)
 
 	def format_data(self, tweet):
+
 		# format source
-		source_url = source_name = ''
 		if 'source' in tweet :
+			source_url = source_name = ''
 			source_info = tweet['source'].replace('<a href="', '')
 			source_info = source_info.replace('" rel="nofollow"', '')
 			source_info = source_info.replace('</a>', '')
 			source_info = source_info.split('>')
 			source_url, source_name = source_info[0], source_info[1]
 
-		tweet['source_url'] = source_url
-		tweet['source_name'] = source_name
+			tweet['source_url'] = source_url
+			tweet['source_name'] = source_name
 
-		# format urls
-		if ('entities' in tweet) & ('urls' in tweet['entities']):
-			urls = []
-			for url in  tweet['entities']['urls']:
-				if url['url'] != '':
-					urls.append(url)
+		if ('extended_tweet' in tweet):
+			del tweet['extended_tweet']
+
+		if ('extended_entities' in tweet):
+			del tweet['extended_entities']
+
+		# format urls & user_mentions
+		if ('entities' in tweet):
+			if ('urls' in tweet['entities']):
+				urls = []
+				for url in  tweet['entities']['urls']:
+					if url['url'] != '':
+						urls.append(url)
 
 			tweet['entities']['urls'] = urls
 
-
-		# user memtion
-		if ('entities' in tweet) & ('user_mentions' in tweet['entities']):
+		if ('user_mentions' in tweet['entities']):
 			user_ids = []
 			for user in  tweet['entities']['user_mentions']:
 				user_ids.append(user['id'])
@@ -451,25 +457,31 @@ class MyStreamListener (StreamListener):
 
 
 
-
 		if ('retweeted_status' in tweet):
 			retweeted_status = tweet['retweeted_status']
 
 			# format source
-			source_url = source_name = ''
-			
 			if 'source' in retweeted_status :
+				source_url = source_name = ''
 				source_info = retweeted_status['source'].replace('<a href="', '')
 				source_info = source_info.replace('" rel="nofollow"', '')
 				source_info = source_info.replace('</a>', '')
 				source_info = source_info.split('>')
 				source_url, source_name = source_info[0], source_info[1]
 
-			tweet['retweeted_status']['source_url'] = source_url
-			tweet['retweeted_status']['source_name'] = source_name
+				tweet['retweeted_status']['source_url'] = source_url
+
+				tweet['retweeted_status']['source_name'] = source_name
 
 
 		
+			if ('extended_tweet' in retweeted_status):
+				del tweet['retweeted_status']['extended_tweet']
+
+			if ('extended_entities' in retweeted_status):
+				del tweet['retweeted_status']['extended_entities']
+
+			# format urls & user_mentions        
 			if ('entities' in retweeted_status):
 				entities = retweeted_status['entities']
 
@@ -495,20 +507,25 @@ class MyStreamListener (StreamListener):
 
 
 			# format source
-			source_url = source_name = ''
-			
 			if 'source' in quoted_status :
+				source_url = source_name = ''
 				source_info = quoted_status['source'].replace('<a href="', '')
 				source_info = source_info.replace('" rel="nofollow"', '')
 				source_info = source_info.replace('</a>', '')
 				source_info = source_info.split('>')
 				source_url, source_name = source_info[0], source_info[1]
 
-			tweet['quoted_status']['source_url'] = source_url
-			tweet['quoted_status']['source_name'] = source_name
+				tweet['quoted_status']['source_url'] = source_url
+				tweet['quoted_status']['source_name'] = source_name
 
 
-		
+			if ('extended_tweet' in quoted_status):
+				del tweet['quoted_status']['extended_tweet']
+
+			if ('extended_entities' in quoted_status):
+				del tweet['quoted_status']['extended_entities']
+
+			# format urls & user_mentions
 			if ('entities' in quoted_status):
 				entities = quoted_status['entities']
 

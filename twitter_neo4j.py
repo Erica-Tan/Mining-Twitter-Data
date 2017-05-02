@@ -60,11 +60,11 @@ MERGE (user)-[:POSTS]->(tweet)
 
 
 
-
-MERGE (source:Source {name:t.source_name}) ON CREATE
-SET source.url = t.source_url
-MERGE (tweet)-[:USING]->(source)
-
+FOREACH (s IN (CASE WHEN t.source_name = '' THEN [] ELSE [t.source_name] END ) |
+    MERGE (source:Source {name:s}) ON CREATE
+    SET source.url = t.source_url
+    MERGE (tweet)-[:USING]->(source)
+)
 
 
 FOREACH (p IN t.place |
@@ -87,8 +87,8 @@ FOREACH (h IN t.entities.hashtags |
 
 FOREACH (l IN t.entities.urls |
     FOREACH(value IN (CASE WHEN l.url = '' THEN [] ELSE [l.url] END) |
-        MERGE (link:Link {url:l.url})
-        ON CREATE SET link.expanded_url = l.expanded_url,
+        MERGE (link:Link {url:l.url}) ON CREATE 
+        SET link.expanded_url = l.expanded_url,
         link.display_url = l.display_url
         MERGE (tweet)-[:CONTAINS]->(link)
     )
@@ -150,40 +150,45 @@ FOREACH (qt IN t.quoted_status |
     MERGE (quser)-[:POSTS]->(qtweet)
 
 
-    MERGE (source:Source {name:qt.source_name}) ON CREATE
-    SET source.url = qt.source_url
-    MERGE (tweet)-[:USING]->(source)
 
+    FOREACH (s IN (CASE WHEN qt.source_name = '' THEN [] ELSE [qt.source_name] END ) |
+        MERGE (qsource:Source {name:s}) ON CREATE
+        SET qsource.url = qt.source_url
+        MERGE (tweet)-[:USING]->(qsource)
+    )
 
 
     FOREACH (p IN qt.place |
-        MERGE (place:Place {id:p.id}) ON CREATE
-        SET place.url = p.url,
-        place.place_type = p.place_type,
-        place.name = p.name,
-        place.full_name = p.full_name,
-        place.country_code = p.country_code,
-        place.country = p.country
-        MERGE (place)-[:PLACES]->(tweet)
+        MERGE (qplace:Place {id:p.id}) ON CREATE
+        SET qplace.url = p.url,
+        qplace.place_type = p.place_type,
+        qplace.name = p.name,
+        qplace.full_name = p.full_name,
+        qplace.country_code = p.country_code,
+        qplace.country = p.country
+        MERGE (qplace)-[:PLACES]->(tweet)
     )
 
 
     FOREACH (h IN qt.entities.hashtags |
-        MERGE (tag:Hashtag {name:LOWER(h.text)})
-        MERGE (tag)-[:TAGS]->(tweet)
+        MERGE (qtag:Hashtag {name:LOWER(h.text)})
+        MERGE (qtag)-[:TAGS]->(tweet)
     )
 
 
     FOREACH (l IN qt.entities.urls |
         FOREACH(value IN (CASE WHEN l.url = '' THEN [] ELSE [l.url] END) |
-            MERGE (link:Link {url:l.url})
-            ON CREATE SET link.expanded_url = l.expanded_url,
-            link.display_url = l.display_url
-            MERGE (tweet)-[:CONTAINS]->(link)
+            MERGE (qlink:Link {url:l.url}) ON CREATE 
+            SET qlink.expanded_url = l.expanded_url,
+            qlink.display_url = l.display_url
+            MERGE (tweet)-[:CONTAINS]->(qlink)
         )
     )
 
+
 )
+
+
 
 
 FOREACH (rt IN t.retweeted_status |
@@ -240,85 +245,117 @@ FOREACH (rt IN t.retweeted_status |
     MERGE (ruser)-[:POSTS]->(rtweet)
 
 
-
-    MERGE (source:Source {name:rt.source_name}) ON CREATE
-    SET source.url = rt.source_url
-    MERGE (tweet)-[:USING]->(source)
+    FOREACH (s IN (CASE WHEN rt.source_name = '' THEN [] ELSE [rt.source_name] END ) |
+        MERGE (rsource:Source {name:s}) ON CREATE
+        SET rsource.url = rt.source_url
+        MERGE (tweet)-[:USING]->(rsource)
+    )
 
 
 
     FOREACH (p IN rt.place |
-        MERGE (place:Place {id:p.id}) ON CREATE
-        SET place.url = p.url,
-        place.place_type = p.place_type,
-        place.name = p.name,
-        place.full_name = p.full_name,
-        place.country_code = p.country_code,
-        place.country = p.country
-        MERGE (place)-[:PLACES]->(tweet)
+        MERGE (rplace:Place {id:p.id}) ON CREATE
+        SET rplace.url = p.url,
+        rplace.place_type = p.place_type,
+        rplace.name = p.name,
+        rplace.full_name = p.full_name,
+        rplace.country_code = p.country_code,
+        rplace.country = p.country
+        MERGE (rplace)-[:PLACES]->(tweet)
     )
 
 
     FOREACH (h IN rt.entities.hashtags |
-        MERGE (tag:Hashtag {name:LOWER(h.text)})
-        MERGE (tag)-[:TAGS]->(tweet)
+        MERGE (rtag:Hashtag {name:LOWER(h.text)})
+        MERGE (rtag)-[:TAGS]->(tweet)
     )
 
 
     FOREACH (l IN rt.entities.urls |
         FOREACH(value IN (CASE WHEN l.url = '' THEN [] ELSE [l.url] END) |
-            MERGE (link:Link {url:l.url})
-            ON CREATE SET link.expanded_url = l.expanded_url,
-            link.display_url = l.display_url
-            MERGE (tweet)-[:CONTAINS]->(link)
+            MERGE (rlink:Link {url:l.url}) ON CREATE 
+            SET rlink.expanded_url = l.expanded_url,
+            rlink.display_url = l.display_url
+            MERGE (tweet)-[:CONTAINS]->(rlink)
         )
     )
 )
 
 
+WITH t, tweet
+MATCH (muser:User)
+WHERE muser.id IN t.entities.user_mentions_ids
+MERGE (tweet)-[:MENTIONS]->(muser)
 
-WITH t as t
-MATCH (user:User), (tweet:Tweet)
-WHERE user.id IN t.entities.user_mentions_ids and tweet.id = t.id
-MERGE (tweet)-[:MENTIONS]-(user)
+WITH t, tweet
+MATCH (rptweet:Tweet {id:t.in_reply_to_status_id})
+MERGE (tweet)-[:PRPLYTO]->(rptweet)
 
+"""
 
-WITH t as t
-MATCH (rtweet:Tweet), (tweet:Tweet)
-WHERE rtweet.id = t.id and tweet.id = t.in_reply_to_status_id
-MERGE (rtweet)-[:PRPLYTO]-(tweet)
-
-
-WITH t as t
-MATCH (user:User), (tweet:Tweet)
-WHERE user.id IN t.retweeted_status.entities.user_mentions_ids and tweet.id = t.retweeted_status.id
-MERGE (tweet)-[:MENTIONS]-(user)
+query1 = """
+UNWIND {json} AS t
 
 
-WITH t as t
-MATCH (rtweet:Tweet), (tweet:Tweet)
-WHERE rtweet.id = t.retweeted_status.id and tweet.id = t.retweeted_status.in_reply_to_status_id
-MERGE (rtweet)-[:PRPLYTO]-(tweet)  
-
-WITH t as t
-MATCH (user:User), (tweet:Tweet)
-WHERE user.id IN t.quoted_status.entities.user_mentions_ids and tweet.id = t.quoted_status.id
-MERGE (tweet)-[:MENTIONS]-(user)
+WITH t
+MATCH (tweet1:Tweet {id:t.quoted_status.id})
+WITH t, tweet1
+MATCH (user1:User)
+WHERE user1.id IN t.quoted_status.entities.user_mentions_ids
+MERGE (tweet1)-[:MENTIONS]->(user1)
+"""
 
 
-WITH t as t
-MATCH (rtweet:Tweet), (tweet:Tweet)
-WHERE rtweet.id = t.quoted_status.id and tweet.id = t.quoted_status.in_reply_to_status_id
-MERGE (rtweet)-[:PRPLYTO]-(tweet)  
+query2="""
+UNWIND {json} AS t
+
+WITH t
+MATCH (tweet1:Tweet {id:t.quoted_status.id})
+WITH t, tweet1
+MATCH (rtweet1:Tweet {id:t.quoted_status.in_reply_to_status_id})
+MERGE (tweet1)-[:PRPLYTO]->(rtweet1)
+"""
 
 
+
+
+query3="""
+UNWIND {json} AS t
+
+WITH t
+MATCH (tweet:Tweet {id:t.retweeted_status.id})
+WITH t, tweet
+MATCH (user:User)
+WHERE user.id IN t.retweeted_status.entities.user_mentions_ids
+MERGE (tweet)-[:MENTIONS]->(user)
+"""
+
+query4="""
+UNWIND {json} AS t
+
+WITH t
+MATCH (tweet:Tweet {id:t.retweeted_status.id})
+WITH t, tweet
+MATCH (rtweet:Tweet {id:t.retweeted_status.in_reply_to_status_id})
+MERGE (tweet)-[:PRPLYTO]->(rtweet)
 """
 
 
 # connect neo4j
 graph = Graph("http://neo4j:123456@localhost:7474")
 
+with open('data/twitter6.json') as data_file:
+    tweet = json.load(data_file)
 
+
+# Send Cypher query.
+graph.run(query, json = tweet)
+graph.run(query1, json = tweet)
+graph.run(query2, json = tweet)
+graph.run(query3, json = tweet)
+graph.run(query4, json = tweet)
+
+'''
 with open('data/filename.txt') as data_file:
     filenames = ast.literal_eval(data_file.readline())
     
@@ -332,4 +369,8 @@ with open('data/filename.txt') as data_file:
         #graph.run(query, json = tweet).dump()
 
     
+'''
+
+
+
 
