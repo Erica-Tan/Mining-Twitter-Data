@@ -3,6 +3,7 @@ CUSTOMER_SECRET = ""
 ACCESS_TOKEN = ""
 ACCESS_SECRET = ""
 DATA_DIR = "data"
+NEO4J_IP = "localhost"
 
 
 try:

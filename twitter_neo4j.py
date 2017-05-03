@@ -1,5 +1,7 @@
 import json
 import ast
+import os
+import settings
 from py2neo import Graph, authenticate
  
 #Property values can only be of primitive types or arrays thereof
@@ -293,6 +295,25 @@ MERGE (tweet)-[:PRPLYTO]->(rptweet)
 
 """
 
+# connect neo4j
+graph = Graph("http://neo4j:123456@"+settings.NEO4J_IP+":7474")
+
+with open('filename.txt') as data_file:
+    filenames = ast.literal_eval(data_file.readline())
+    
+for filename in filenames:
+    with open(os.path.join(settings.DATA_DIR, 'twitter'+filename+'.json')) as data_file:
+        tweet = json.load(data_file)
+
+
+    # Send Cypher query.
+    graph.run(query, json = tweet)
+    #graph.run(query, json = tweet).dump()
+
+
+
+
+
 query1 = """
 UNWIND {json} AS t
 
@@ -315,10 +336,6 @@ WITH t, tweet1
 MATCH (rtweet1:Tweet {id:t.quoted_status.in_reply_to_status_id})
 MERGE (tweet1)-[:PRPLYTO]->(rtweet1)
 """
-
-
-
-
 query3="""
 UNWIND {json} AS t
 
@@ -340,10 +357,7 @@ MATCH (rtweet:Tweet {id:t.retweeted_status.in_reply_to_status_id})
 MERGE (tweet)-[:PRPLYTO]->(rtweet)
 """
 
-
-# connect neo4j
-graph = Graph("http://neo4j:123456@localhost:7474")
-
+'''
 with open('data/twitter6.json') as data_file:
     tweet = json.load(data_file)
 
@@ -354,22 +368,12 @@ graph.run(query1, json = tweet)
 graph.run(query2, json = tweet)
 graph.run(query3, json = tweet)
 graph.run(query4, json = tweet)
-
 '''
-with open('data/filename.txt') as data_file:
-    filenames = ast.literal_eval(data_file.readline())
-    
-    for filename in filenames:
-        with open('data/twitter'+filename+'.json') as data_file:
-            tweet = json.load(data_file)
 
 
-        # Send Cypher query.
-        graph.run(query, json = tweet)
-        #graph.run(query, json = tweet).dump()
 
-    
-'''
+
+
 
 
 

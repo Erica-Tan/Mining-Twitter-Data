@@ -6,6 +6,12 @@ RETURN s.name as Source, count(t) as Count
 ORDER BY Count DESC
 LIMIT 5
 
+
+profile MATCH (s:Source)
+WITH s, SIZE((s)<-[:USING]-()) as Count
+ORDER BY Count DESC LIMIT 5
+RETURN s.name, Count;
+
 2. Which hashtags occur most frequently?
    What are the most tweeted words
 
