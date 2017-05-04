@@ -21,6 +21,13 @@ ORDER BY Count DESC
 LIMIT 5
 
 
+profile MATCH (h:Hashtag)
+WITH h, SIZE((h)<-[:TAGS]-()) as Count
+ORDER BY Count DESC LIMIT 5
+RETURN h.name, Count;
+
+
+
 3. Which tweet has been retweeted the most, and who posted it?
    Who is most popular on Twitter (based on frequency of retweets)
 
@@ -36,11 +43,7 @@ RETURN u.screen_name AS User, t.text AS Tweet, Retweets
 
 
 
-5. What time of the day do people tweet most (within a specific timeframe; 
-       considering time difference over global locations) 
-
-
-6. Which other topics could we recommend for a specific user? 
+5. Which other topics could we recommend for a specific user? 
 
 MATCH (u:User {screen_name:"D0456Len"})-[:POSTS]->(tweet)
     <-[:TAGS]-(tag1:Hashtag)-[:TAGS]->(tweet2)<-[:TAGS]-(tag2:Hashtag)
@@ -49,4 +52,7 @@ RETURN tag2.name as Topics, count(*) as Count
 ORDER BY count(*) DESC LIMIT 5
 
 
+
+What time of the day do people tweet most (within a specific timeframe; 
+       considering time difference over global locations) 
 
