@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Command line suite" duration-ms="1030" started-at="2017-05-16T16:58:34Z" finished-at="2017-05-16T16:58:35Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="1030" started-at="2017-05-16T16:58:34Z" finished-at="2017-05-16T16:58:35Z">
+      <class name="com.yahoo.ycsb.TestByteIterator">
+        <test-method status="PASS" signature="testRandomByteIterator()" name="testRandomByteIterator" duration-ms="46" started-at="2017-05-16T16:58:34Z" finished-at="2017-05-16T16:58:34Z">
+        </test-method>
+      </class>
+      <class name="com.yahoo.ycsb.measurements.exporter.TestMeasurementsExporter">
+        <test-method status="PASS" signature="testJSONArrayMeasurementsExporter()" name="testJSONArrayMeasurementsExporter" duration-ms="952" started-at="2017-05-16T16:58:34Z" finished-at="2017-05-16T16:58:35Z">
+        </test-method>
+      </class>
+      <class name="com.yahoo.ycsb.generator.TestZipfianGenerator">
+        <test-method status="PASS" signature="testMinAndMaxParameter()" name="testMinAndMaxParameter" duration-ms="16" started-at="2017-05-16T16:58:34Z" finished-at="2017-05-16T16:58:34Z">
+        </test-method>
+      </class>
+    </test>
+  </suite>
+</testng-results>

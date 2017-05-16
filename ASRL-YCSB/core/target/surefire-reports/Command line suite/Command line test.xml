@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite hostname="VitaSource-PC" name="com.yahoo.ycsb.TestByteIterator" tests="3" failures="0" timestamp="16 May 2017 04:58:35 GMT" time="1.03" errors="0">
+  <testcase name="testRandomByteIterator" time="0.046" classname="com.yahoo.ycsb.TestByteIterator"/>
+  <testcase name="testMinAndMaxParameter" time="0.016" classname="com.yahoo.ycsb.generator.TestZipfianGenerator"/>
+  <testcase name="testJSONArrayMeasurementsExporter" time="0.952" classname="com.yahoo.ycsb.measurements.exporter.TestMeasurementsExporter"/>
+</testsuite>

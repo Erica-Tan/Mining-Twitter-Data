@@ -1,0 +1,3 @@
+com\yahoo\ycsb\measurements\exporter\TestMeasurementsExporter.class
+com\yahoo\ycsb\generator\TestZipfianGenerator.class
+com\yahoo\ycsb\TestByteIterator.class

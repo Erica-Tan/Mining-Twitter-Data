@@ -1,0 +1,348 @@
+2017-05-16 05:58:02.479+0000 WARN  [o.n.i.p.PageCache] The dbms.memory.pagecache.size setting has not been configured. It is recommended that this setting is always explicitly configured, to ensure the system has a balanced configuration. Until then, a computed heuristic value of 1602936832 bytes will be used instead. 
+2017-05-16 05:58:02.589+0000 INFO  [o.n.k.i.f.CommunityEditionModule] No locking implementation specified, defaulting to 'community'
+2017-05-16 05:58:02.869+0000 INFO  [o.n.k.AvailabilityGuard] Requirement makes database unavailable: Database available
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] --- INITIALIZED diagnostics START ---
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] Neo4j Kernel properties:
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] unsupported.dbms.edition=community
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] unsupported.dbms.directories.neo4j_home=D:\Python\Mining-Twitter-Data\ASRL-YCSB\scripts\data.db
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] unsupported.dbms.ephemeral=false
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] Diagnostics providers:
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] org.neo4j.kernel.configuration.Config
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] org.neo4j.kernel.info.DiagnosticsManager
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] SYSTEM_MEMORY
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] JAVA_MEMORY
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] OPERATING_SYSTEM
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] JAVA_VIRTUAL_MACHINE
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] CLASSPATH
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] LIBRARY_PATH
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] SYSTEM_PROPERTIES
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] NETWORK
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] System memory information:
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] Total Physical memory: 3.84 GB
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] Free Physical memory: 1.25 GB
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] Committed virtual memory: 160.88 MB
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] Total swap space: 9.81 GB
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] Free swap space: 5.73 GB
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] JVM memory information:
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] Free  memory: 38.08 MB
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] Total memory: 59.50 MB
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] Max   memory: 875.00 MB
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] Garbage Collector: PS Scavenge: [PS Eden Space, PS Survivor Space]
+2017-05-16 05:58:02.932+0000 INFO  [o.n.k.i.DiagnosticsManager] Garbage Collector: PS MarkSweep: [PS Eden Space, PS Survivor Space, PS Old Gen]
+2017-05-16 05:58:02.947+0000 INFO  [o.n.k.i.DiagnosticsManager] Memory Pool: Code Cache (Non-heap memory): committed=3.00 MB, used=2.95 MB, max=240.00 MB, threshold=0.00 B
+2017-05-16 05:58:02.947+0000 INFO  [o.n.k.i.DiagnosticsManager] Memory Pool: Metaspace (Non-heap memory): committed=9.63 MB, used=9.11 MB, max=-1.00 B, threshold=0.00 B
+2017-05-16 05:58:02.947+0000 INFO  [o.n.k.i.DiagnosticsManager] Memory Pool: Compressed Class Space (Non-heap memory): committed=1.38 MB, used=1.22 MB, max=1.00 GB, threshold=0.00 B
+2017-05-16 05:58:02.947+0000 INFO  [o.n.k.i.DiagnosticsManager] Memory Pool: PS Eden Space (Heap memory): committed=15.50 MB, used=7.09 MB, max=323.00 MB, threshold=?
+2017-05-16 05:58:02.947+0000 INFO  [o.n.k.i.DiagnosticsManager] Memory Pool: PS Survivor Space (Heap memory): committed=2.50 MB, used=2.50 MB, max=2.50 MB, threshold=?
+2017-05-16 05:58:02.947+0000 INFO  [o.n.k.i.DiagnosticsManager] Memory Pool: PS Old Gen (Heap memory): committed=41.50 MB, used=11.82 MB, max=656.00 MB, threshold=0.00 B
+2017-05-16 05:58:02.947+0000 INFO  [o.n.k.i.DiagnosticsManager] Operating system information:
+2017-05-16 05:58:02.947+0000 INFO  [o.n.k.i.DiagnosticsManager] Operating System: Windows 7; version: 6.1; arch: amd64; cpus: 4
+2017-05-16 05:58:02.963+0000 INFO  [o.n.k.i.DiagnosticsManager] Process id: 2972@VitaSource-PC
+2017-05-16 05:58:02.963+0000 INFO  [o.n.k.i.DiagnosticsManager] Byte order: LITTLE_ENDIAN
+2017-05-16 05:58:02.963+0000 INFO  [o.n.k.i.DiagnosticsManager] Local timezone: Pacific/Auckland
+2017-05-16 05:58:02.963+0000 INFO  [o.n.k.i.DiagnosticsManager] JVM information:
+2017-05-16 05:58:02.963+0000 INFO  [o.n.k.i.DiagnosticsManager] VM Name: Java HotSpot(TM) 64-Bit Server VM
+2017-05-16 05:58:02.963+0000 INFO  [o.n.k.i.DiagnosticsManager] VM Vendor: Oracle Corporation
+2017-05-16 05:58:02.963+0000 INFO  [o.n.k.i.DiagnosticsManager] VM Version: 25.121-b13
+2017-05-16 05:58:02.963+0000 INFO  [o.n.k.i.DiagnosticsManager] JIT compiler: HotSpot 64-Bit Tiered Compilers
+2017-05-16 05:58:02.963+0000 INFO  [o.n.k.i.DiagnosticsManager] VM Arguments: []
+2017-05-16 05:58:02.963+0000 INFO  [o.n.k.i.DiagnosticsManager] Java classpath:
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-cypher-compiler-3.0-3.0.8.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-cypher-frontend-2.3-2.3.9.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-cypher-compiler-3.1-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/parboiled-scala_2.11-1.1.7.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/lucene-analyzers-common-5.5.0.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [loader.1] file:/D:/Program%20Files/Java/jdk1.8.0_121/jre/lib/ext/sunpkcs11.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/asm-5.0.4.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [loader.1] file:/D:/Program%20Files/Java/jdk1.8.0_121/jre/lib/ext/cldrdata.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [bootstrap] D:\Program Files\Java\jdk1.8.0_121\jre\lib\jfr.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-unsafe-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/commons-lang3-3.3.2.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/commons-compress-1.12.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [bootstrap] D:\Program Files\Java\jdk1.8.0_121\jre\classes
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-kernel-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [bootstrap] D:\Program Files\Java\jdk1.8.0_121\jre\lib\rt.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/caffeine-2.3.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-logging-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-primitive-collections-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-lucene-upgrade-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [bootstrap] D:\Program Files\Java\jdk1.8.0_121\jre\lib\jce.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [loader.1] file:/D:/Program%20Files/Java/jdk1.8.0_121/jre/lib/ext/localedata.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [bootstrap] D:\Program Files\Java\jdk1.8.0_121\jre\lib\sunrsasign.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-import-tool-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-codegen-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [bootstrap] D:\Program Files\Java\jdk1.8.0_121\jre\lib\resources.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-command-line-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-lucene-index-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-kernel-3.1.3-tests.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/scala-reflect-2.11.8.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [loader.1] file:/D:/Program%20Files/Java/jdk1.8.0_121/jre/lib/ext/sunmscapi.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-io-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [loader.1] file:/D:/Program%20Files/Java/jdk1.8.0_121/jre/lib/ext/zipfs.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [loader.1] file:/D:/Program%20Files/Java/jdk1.8.0_121/jre/lib/ext/sunjce_provider.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [loader.1] file:/D:/Program%20Files/Java/jdk1.8.0_121/jre/lib/ext/jfxrt.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/scala-library-2.11.8.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [loader.1] file:/D:/Program%20Files/Java/jdk1.8.0_121/jre/lib/ext/access-bridge-64.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [loader.1] file:/D:/Program%20Files/Java/jdk1.8.0_121/jre/lib/ext/nashorn.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-csv-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/lucene-codecs-5.5.0.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-common-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [loader.1] file:/D:/Program%20Files/Java/jdk1.8.0_121/jre/lib/ext/sunec.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-collections-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-graphdb-api-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/core/target/core-0.13.0-SNAPSHOT.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-graph-matching-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/parboiled-core-1.1.7.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-cypher-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-resource-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-cypher-frontend-3.1-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [loader.1] file:/D:/Program%20Files/Java/jdk1.8.0_121/jre/lib/ext/dnsns.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-consistency-check-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-cypher-frontend-3.0-3.0.8.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-graph-algo-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [loader.1] file:/D:/Program%20Files/Java/jdk1.8.0_121/jre/lib/ext/jaccess.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-cypher-compiler-2.3-2.3.9.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/core/target/archive-tmp/core-0.13.0-SNAPSHOT.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/concurrentlinkedhashmap-lru-1.4.2.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-udc-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [bootstrap] D:\Program Files\Java\jdk1.8.0_121\jre\lib\jsse.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/lucene-backward-codecs-5.5.0.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/opencsv-2.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/neo4j-binding-0.13.0-SNAPSHOT.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/neo4j-dbms-3.1.3.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/lucene-core-5.5.0.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [bootstrap] D:\Program Files\Java\jdk1.8.0_121\jre\lib\charsets.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager]  [classpath + loader.0] file:/D:/Python/Mining-Twitter-Data/ASRL-YCSB/neo4j/target/dependency/lucene-queryparser-5.5.0.jar
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] Library path:
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] D:\Program Files\Java\jdk1.8.0_121\bin
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] C:\Windows\Sun\Java\bin
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] C:\Windows\System32
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] C:\Windows
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] C:\Program Files (x86)\Intel\iCLS Client
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] C:\Program Files\Intel\iCLS Client
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] C:\Windows\System32
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] C:\Windows
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] C:\Windows\System32\wbem
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] C:\Windows\System32\WindowsPowerShell\v1.0
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] C:\Program Files\Intel\Intel(R) Management Engine Components\DAL
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] C:\Program Files\Intel\Intel(R) Management Engine Components\IPT
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] C:\Program Files (x86)\Common Files\Roxio Shared\DLLShared
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] C:\Program Files (x86)\Skype\Phone
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] C:\Windows\System32\WindowsPowerShell\v1.0
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] D:\Program Files\IBM\SPSS\Statistics\24\JRE\bin
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] D:\Program Files\Git\cmd
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] D:\Program Files\nodejs
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] D:\Program Files\Python\Python27
+2017-05-16 05:58:02.979+0000 INFO  [o.n.k.i.DiagnosticsManager] D:\Program Files\Redis
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] D:\Program Files\curl-7.53.1\src
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] C:\Users\VitaSource\AppData\Roaming\npm
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] D:\Program Files (x86)\apache-maven-3.5.0\bin
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] D:\Program Files (x86)\YCSB\bin
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] D:\Python\Mining-Twitter-Data\ASRL-YCSB\scripts
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] System.properties:
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] sun.boot.library.path = D:\Program Files\Java\jdk1.8.0_121\jre\bin
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] user.country.format = NZ
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] path.separator = ;
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] file.encoding.pkg = sun.io
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] user.country = CN
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] user.script = 
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] sun.java.launcher = SUN_STANDARD
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] sun.os.patch.level = Service Pack 1
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] user.dir = D:\Python\Mining-Twitter-Data\ASRL-YCSB\scripts
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] user.variant = 
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] sun.jnu.encoding = GBK
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] user.home = C:\Users\VitaSource
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] user.timezone = Pacific/Auckland
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] file.encoding = GBK
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] user.name = VitaSource
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] sun.java.command = com.yahoo.ycsb.Client -db com.yahoo.ycsb.db.Neo4jClient -s -P workloads/workloada -p recordcount=75000 -threads 10 -load
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] sun.arch.data.model = 64
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] user.language = zh
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] user.language.format = en
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] awt.toolkit = sun.awt.windows.WToolkit
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] sun.stderr.encoding = ms936
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] file.separator = \
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] sun.io.unicode.encoding = UnicodeLittle
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] sun.cpu.endian = little
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] sun.desktop = windows
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] sun.cpu.isalist = amd64
+2017-05-16 05:58:02.994+0000 INFO  [o.n.k.i.DiagnosticsManager] Network information:
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface Software Loopback Interface 1:
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager]     address: 127.0.0.1
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager]     address: 0:0:0:0:0:0:0:1
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface WAN Miniport (SSTP):
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface WAN Miniport (L2TP):
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface WAN Miniport (PPTP):
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface WAN Miniport (PPPOE):
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface WAN Miniport (IPv6):
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface WAN Miniport (Network Monitor):
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface WAN Miniport (IP):
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface RAS Async Adapter:
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface RT73 USB Wireless LAN Card:
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface 802.11n USB Wireless LAN Card:
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface Qualcomm Atheros AR5BMD222 Wireless Network Adapter:
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager]     address: 192.168.1.75
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager]     address: fe80:0:0:0:f994:e6dc:b088:a4bf%wlan2
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface WAN Miniport (IKEv2):
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface Microsoft ISATAP Adapter:
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface Bluetooth Device (RFCOMM Protocol TDI):
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface Bluetooth Device (Personal Area Network):
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface VMware Virtual Ethernet Adapter for VMnet1:
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager]     address: 192.168.138.1
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager]     address: fe80:0:0:0:f834:a520:5195:8829%eth4
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface VMware Virtual Ethernet Adapter for VMnet8:
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager]     address: 192.168.230.1
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager]     address: fe80:0:0:0:d82b:4408:2bc3:4d2d%eth5
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface Qualcomm Atheros AR5BMD222 Wireless Network Adapter-Virtual WiFi Filter Driver-0000:
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface Qualcomm Atheros AR5BMD222 Wireless Network Adapter-QoS Packet Scheduler-0000:
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface WAN Miniport (Network Monitor)-QoS Packet Scheduler-0000:
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface WAN Miniport (IP)-QoS Packet Scheduler-0000:
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface WAN Miniport (IPv6)-QoS Packet Scheduler-0000:
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface Qualcomm Atheros AR5BMD222 Wireless Network Adapter-Native WiFi Filter Driver-0000:
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] Interface Qualcomm Atheros AR5BMD222 Wireless Network Adapter-WFP LightWeight Filter-0000:
+2017-05-16 05:58:03.181+0000 INFO  [o.n.k.i.DiagnosticsManager] --- INITIALIZED diagnostics END ---
+2017-05-16 05:58:03.322+0000 INFO  [o.n.k.i.s.f.RecordFormatSelector] Selected format 'RecordFormat:StandardV3_0[v0.A.7]' for the new store
+2017-05-16 05:58:06.199+0000 INFO  [o.n.k.i.a.i.IndexingService] IndexingService.init: indexes not specifically mentioned above are POPULATING
+2017-05-16 05:58:06.199+0000 INFO  [o.n.k.a.i.l.LuceneLabelScanStore] No lucene scan store index found, this might just be first use. Preparing to rebuild.
+2017-05-16 05:58:06.620+0000 INFO  [o.n.k.NeoStoreDataSource] Opened logical log [D:\Python\Mining-Twitter-Data\ASRL-YCSB\scripts\data.db\neostore.transaction.db.0] version=0, lastTxId=1 (clean)
+2017-05-16 05:58:06.620+0000 INFO  [o.n.k.NeoStoreDataSource] No commits found after last check point (which is at <no log position given>)
+2017-05-16 05:58:06.636+0000 WARN  [o.n.k.i.s.MetaDataStore] Missing counts store, rebuilding it.
+2017-05-16 05:58:06.792+0000 INFO  [o.n.k.i.a.i.IndexingService] IndexingService.start: indexes not specifically mentioned above are POPULATING
+2017-05-16 05:58:06.792+0000 INFO  [o.n.k.a.i.l.LuceneLabelScanStore] Rebuilding lucene scan store, this may take a while
+2017-05-16 05:58:06.823+0000 INFO  [o.n.k.a.i.l.LuceneLabelScanStore] Lucene scan store rebuilt (roughly 0 nodes)
+2017-05-16 05:58:06.823+0000 INFO  [o.n.k.i.DatabaseHealth] Database health set to OK
+2017-05-16 05:58:07.962+0000 INFO  [o.n.k.AvailabilityGuard] Fulfilling of requirement makes database available: Database available
+2017-05-16 05:58:07.962+0000 INFO  [o.n.k.i.f.GraphDatabaseFacadeFactory] Database is now ready
+2017-05-16 05:58:07.962+0000 INFO  [o.n.k.i.DiagnosticsManager] --- STARTED diagnostics for KernelDiagnostics:Versions START ---
+2017-05-16 05:58:07.962+0000 INFO  [o.n.k.i.DiagnosticsManager] Graph Database: community single StoreId{creationTime=1494914285414, randomId=-8589351294331653425, storeVersion=15531981201765894, upgradeTime=1494914285414, upgradeId=1}
+2017-05-16 05:58:07.962+0000 INFO  [o.n.k.i.DiagnosticsManager] Kernel version: 3.1.3,04f0baa1339a0eab4d2d316b336230cdec036119
+2017-05-16 05:58:07.962+0000 INFO  [o.n.k.i.DiagnosticsManager] --- STARTED diagnostics for KernelDiagnostics:Versions END ---
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager] --- STARTED diagnostics for NEO_STORE_VERSIONS START ---
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager] Store versions:
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager] Store versions:
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   ArrayPropertyStore v0.A.7
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   NodeStore v0.A.7
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   StringPropertyStore v0.A.7
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   PropertyIndexStore v0.A.7
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   StringPropertyStore v0.A.7
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   ArrayPropertyStore v0.A.7
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   PropertyStore v0.A.7
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   RelationshipStore v0.A.7
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   StringPropertyStore v0.A.7
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   RelationshipTypeStore v0.A.7
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   StringPropertyStore v0.A.7
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   LabelTokenStore v0.A.7
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   SchemaStore v0.A.7
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   RelationshipGroupStore v0.A.7
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   NeoStore v0.A.7
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager] --- STARTED diagnostics for NEO_STORE_VERSIONS END ---
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager] --- STARTED diagnostics for NEO_STORE_ID_USAGE START ---
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager] Id usage:
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager] Id usage:
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   ArrayPropertyStore: used=1 high=0
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   NodeStore: used=0 high=-1
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   StringPropertyStore: used=1 high=0
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   PropertyIndexStore: used=0 high=-1
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   StringPropertyStore: used=1 high=0
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   ArrayPropertyStore: used=1 high=0
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   PropertyStore: used=0 high=-1
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   RelationshipStore: used=0 high=-1
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   StringPropertyStore: used=1 high=0
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   RelationshipTypeStore: used=0 high=-1
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   StringPropertyStore: used=1 high=0
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   LabelTokenStore: used=0 high=-1
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   SchemaStore: used=1 high=0
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   RelationshipGroupStore: used=1 high=0
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager]   NeoStore: used=15 high=14
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager] --- STARTED diagnostics for NEO_STORE_ID_USAGE END ---
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager] --- STARTED diagnostics for NEO_STORE_RECORDS START ---
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager] Neostore records:
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager] TIME (Creation time): 1494914285414
+2017-05-16 05:58:07.977+0000 INFO  [o.n.k.i.DiagnosticsManager] RANDOM_NUMBER (Random number for store id): -8589351294331653425
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] LOG_VERSION (Current log version): 0
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] LAST_TRANSACTION_ID (Last committed transaction): 1
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] STORE_VERSION (Store format version): 15531981201765894
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] FIRST_GRAPH_PROPERTY (First property record containing graph properties): -1
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] LAST_CONSTRAINT_TRANSACTION (Last committed transaction containing constraint changes): 0
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] UPGRADE_TRANSACTION_ID (Transaction id most recent upgrade was performed at): 1
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] UPGRADE_TIME (Time of last upgrade): 1494914285414
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] LAST_TRANSACTION_CHECKSUM (Checksum of last committed transaction): 0
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] UPGRADE_TRANSACTION_CHECKSUM (Checksum of transaction id the most recent upgrade was performed at): 0
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] LAST_CLOSED_TRANSACTION_LOG_VERSION (Log version where the last transaction commit entry has been written into): 0
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] LAST_CLOSED_TRANSACTION_LOG_BYTE_OFFSET (Byte offset in the log file where the last transaction commit entry has been written into): 16
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] LAST_TRANSACTION_COMMIT_TIMESTAMP (Commit time timestamp for last committed transaction): 0
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] UPGRADE_TRANSACTION_COMMIT_TIMESTAMP (Commit timestamp of transaction the most recent upgrade was performed at): 0
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] --- STARTED diagnostics for NEO_STORE_RECORDS END ---
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] --- STARTED diagnostics for TRANSACTION_RANGE START ---
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] Transaction log:
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] No transactions found in any log
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] --- STARTED diagnostics for TRANSACTION_RANGE END ---
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] --- STARTED diagnostics for KernelDiagnostics:StoreFiles START ---
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager] Disk space on partition (Total / Free / Free %): 94371835904 / 84936380416 / 90
+Storage files: (filename : modification date - size)
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager]   index:
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager]   - Total: 2017-05-16T17:58:06+1200 - 0.00 B
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager]   logs:
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager]     debug.log: 2017-05-16T17:58:06+1200 - 34.96 kB
+2017-05-16 05:58:07.993+0000 INFO  [o.n.k.i.DiagnosticsManager]   - Total: 2017-05-16T17:58:02+1200 - 34.96 kB
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore: 2017-05-16T17:58:05+1200 - 8.00 kB
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.counts.db.a: 2017-05-16T17:58:06+1200 - 96.00 B
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.id: 2017-05-16T17:58:05+1200 - 9.00 B
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.labeltokenstore.db: 2017-05-16T17:58:04+1200 - 0.00 B
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.labeltokenstore.db.id: 2017-05-16T17:58:04+1200 - 9.00 B
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.labeltokenstore.db.names: 2017-05-16T17:58:04+1200 - 8.00 kB
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.labeltokenstore.db.names.id: 2017-05-16T17:58:04+1200 - 9.00 B
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.nodestore.db: 2017-05-16T17:58:03+1200 - 0.00 B
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.nodestore.db.id: 2017-05-16T17:58:03+1200 - 9.00 B
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.nodestore.db.labels: 2017-05-16T17:58:03+1200 - 8.00 kB
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.nodestore.db.labels.id: 2017-05-16T17:58:03+1200 - 9.00 B
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.propertystore.db: 2017-05-16T17:58:04+1200 - 0.00 B
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.propertystore.db.arrays: 2017-05-16T17:58:04+1200 - 8.00 kB
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.propertystore.db.arrays.id: 2017-05-16T17:58:04+1200 - 9.00 B
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.propertystore.db.id: 2017-05-16T17:58:04+1200 - 9.00 B
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.propertystore.db.index: 2017-05-16T17:58:03+1200 - 0.00 B
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.propertystore.db.index.id: 2017-05-16T17:58:03+1200 - 9.00 B
+2017-05-16 05:58:08.009+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.propertystore.db.index.keys: 2017-05-16T17:58:03+1200 - 8.00 kB
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.propertystore.db.index.keys.id: 2017-05-16T17:58:03+1200 - 9.00 B
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.propertystore.db.strings: 2017-05-16T17:58:04+1200 - 8.00 kB
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.propertystore.db.strings.id: 2017-05-16T17:58:04+1200 - 9.00 B
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.relationshipgroupstore.db: 2017-05-16T17:58:05+1200 - 8.00 kB
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.relationshipgroupstore.db.id: 2017-05-16T17:58:05+1200 - 9.00 B
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.relationshipstore.db: 2017-05-16T17:58:04+1200 - 0.00 B
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.relationshipstore.db.id: 2017-05-16T17:58:04+1200 - 9.00 B
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.relationshiptypestore.db: 2017-05-16T17:58:04+1200 - 0.00 B
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.relationshiptypestore.db.id: 2017-05-16T17:58:04+1200 - 9.00 B
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.relationshiptypestore.db.names: 2017-05-16T17:58:04+1200 - 8.00 kB
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.relationshiptypestore.db.names.id: 2017-05-16T17:58:04+1200 - 9.00 B
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.schemastore.db: 2017-05-16T17:58:05+1200 - 8.00 kB
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.schemastore.db.id: 2017-05-16T17:58:05+1200 - 9.00 B
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]   neostore.transaction.db.0: 2017-05-16T17:58:06+1200 - 16.00 B
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]   schema:
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]     label:
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]       lucene:
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]         labelStore:
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]           1:
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]             write.lock: 2017-05-16T17:58:06+1200 - 0.00 B
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]           - Total: 2017-05-16T17:58:06+1200 - 0.00 B
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]           failure-message: 2017-05-16T17:58:06+1200 - 16.00 kB
+2017-05-16 05:58:08.024+0000 INFO  [o.n.k.i.DiagnosticsManager]         - Total: 2017-05-16T17:58:06+1200 - 16.00 kB
+2017-05-16 05:58:08.040+0000 INFO  [o.n.k.i.DiagnosticsManager]       - Total: 2017-05-16T17:58:06+1200 - 16.00 kB
+2017-05-16 05:58:08.040+0000 INFO  [o.n.k.i.DiagnosticsManager]     - Total: 2017-05-16T17:58:06+1200 - 16.00 kB
+2017-05-16 05:58:08.040+0000 INFO  [o.n.k.i.DiagnosticsManager]   - Total: 2017-05-16T17:58:06+1200 - 16.00 kB
+2017-05-16 05:58:08.040+0000 INFO  [o.n.k.i.DiagnosticsManager]   store_lock: 2017-05-16T17:58:03+1200 - 0.00 B
+2017-05-16 05:58:08.040+0000 INFO  [o.n.k.i.DiagnosticsManager] --- STARTED diagnostics for KernelDiagnostics:StoreFiles END ---
+2017-05-16 05:58:08.414+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] Index population started: [:data(key) [provider: {key=lucene, version=1.0}]]
+2017-05-16 05:58:08.492+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] Completed node store scan. Flushing all pending updates.
+BatchingMultipleIndexPopulator{activeTasks=0, executor=java.util.concurrent.ThreadPoolExecutor@5e90537e[Running, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], batchedUpdates = [], queuedUpdates = 0}
+2017-05-16 05:58:08.492+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] Shutting down executor.
+BatchingMultipleIndexPopulator{activeTasks=0, executor=java.util.concurrent.ThreadPoolExecutor@5e90537e[Running, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], batchedUpdates = [], queuedUpdates = 0}
+2017-05-16 05:58:08.601+0000 INFO  [o.n.k.i.a.i.IndexPopulationJob] Index population completed. Index is now online: [:data(key) [provider: {key=lucene, version=1.0}]]
+2017-05-16 05:58:09.990+0000 WARN  [o.n.k.i.c.MonitorGc] GC Monitor: Application threads blocked for 207ms.
+2017-05-16 05:58:10.723+0000 WARN  [o.n.k.i.c.MonitorGc] GC Monitor: Application threads blocked for 483ms.
+2017-05-16 05:58:13.547+0000 WARN  [o.n.k.i.c.MonitorGc] GC Monitor: Application threads blocked for 1315ms.
+2017-05-16 05:58:16.573+0000 WARN  [o.n.k.i.c.MonitorGc] GC Monitor: Application threads blocked for 2084ms.
+2017-05-16 05:58:19.852+0000 WARN  [o.n.k.i.c.MonitorGc] GC Monitor: Application threads blocked for 2562ms.
