@@ -295,6 +295,7 @@ MERGE (tweet)-[:PRPLYTO]->(rptweet)
 
 """
 
+
 # connect neo4j
 graph = Graph("http://neo4j:123456@"+settings.NEO4J_IP+":7474")
 
@@ -314,61 +315,6 @@ for filename in filenames:
 
 
 
-query1 = """
-UNWIND {json} AS t
-
-
-WITH t
-MATCH (tweet1:Tweet {id:t.quoted_status.id})
-WITH t, tweet1
-MATCH (user1:User)
-WHERE user1.id IN t.quoted_status.entities.user_mentions_ids
-MERGE (tweet1)-[:MENTIONS]->(user1)
-"""
-
-
-query2="""
-UNWIND {json} AS t
-
-WITH t
-MATCH (tweet1:Tweet {id:t.quoted_status.id})
-WITH t, tweet1
-MATCH (rtweet1:Tweet {id:t.quoted_status.in_reply_to_status_id})
-MERGE (tweet1)-[:PRPLYTO]->(rtweet1)
-"""
-query3="""
-UNWIND {json} AS t
-
-WITH t
-MATCH (tweet:Tweet {id:t.retweeted_status.id})
-WITH t, tweet
-MATCH (user:User)
-WHERE user.id IN t.retweeted_status.entities.user_mentions_ids
-MERGE (tweet)-[:MENTIONS]->(user)
-"""
-
-query4="""
-UNWIND {json} AS t
-
-WITH t
-MATCH (tweet:Tweet {id:t.retweeted_status.id})
-WITH t, tweet
-MATCH (rtweet:Tweet {id:t.retweeted_status.in_reply_to_status_id})
-MERGE (tweet)-[:PRPLYTO]->(rtweet)
-"""
-
-'''
-with open('data/twitter6.json') as data_file:
-    tweet = json.load(data_file)
-
-
-# Send Cypher query.
-graph.run(query, json = tweet)
-graph.run(query1, json = tweet)
-graph.run(query2, json = tweet)
-graph.run(query3, json = tweet)
-graph.run(query4, json = tweet)
-'''
 
 
 
