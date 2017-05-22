@@ -1,20 +1,49 @@
-1. which platform are users tweeting from most often?
 
+1. Which tweet is retweeted the most, and who posts it?
+
+MATCH (t:Tweet)
+WITH t, t.retweet_count AS Retweets
+ORDER BY Retweets DESC
+LIMIT 1
+MATCH (u:User)-[:POSTS]->(t)
+RETURN u.screen_name AS User, t.text AS Tweet, Retweets
+
+
+2. What are the top 3 languages in which the tweets are written?
+
+
+MATCH (t:Tweet)
+RETURN t.lang AS Language, count(t) as Count
+ORDER BY Count DESC LIMIT 3
+
+3. What are the top 3 countries where users tweet most    
+      frequently?
+
+
+profile MATCH (t:Tweet)<-[:PLACES]-(p:Place)
+RETURN p.country AS Country, count(p) as Count
+ORDER BY Count DESC
+LIMIT 3
+
+
+4. which platform are users tweeting from most often?
+Which utility is used to post the tweets by users (i.e.: iphone, 
+      android)
 
 MATCH (t:Tweet)-[:USING]->(s:Source)
 RETURN s.name AS Source, count(t) as Count
 ORDER BY Count DESC
-LIMIT 5
+LIMIT 1
 
 
 profile MATCH (s:Source)
 WITH s, SIZE((s)<-[:USING]-()) as Count
-ORDER BY Count DESC LIMIT 5
+ORDER BY Count DESC LIMIT 1
 RETURN s.name AS Source, Count;
 
 
-2. Which hashtags occur most frequently?
-   What are the most tweeted words
+
+5.  Which are the 5 most popular hashtags?
 
 MATCH (t:Tweet)<-[:TAGS]-(h:Hashtag)
 RETURN h.name AS Hashtag, COUNT(t) AS Count
@@ -29,35 +58,6 @@ RETURN h.name AS Hashtag, Count;
 
 
 
-3. which country
-
-profile MATCH (t:Tweet)<-[:PLACES]-(p:Place)
-RETURN p.country AS Country, count(p) as Count
-ORDER BY Count DESC
-LIMIT 5
-
-
-4. What are the top 5 languages in which the tweets are written 
-
-MATCH (u:User)
-RETURN u.lang AS Language, count(u) as Count
-ORDER BY Count DESC LIMIT 5
-
-
-
-
-5. Which tweet has been retweeted the most, and who posted it?
-   Who is most popular on Twitter (based on frequency of retweets)
-
-MATCH (t:Tweet)
-WITH t, t.retweet_count AS Retweets
-ORDER BY Retweets DESC
-LIMIT 1
-MATCH (u:User)-[:POSTS]->(t)
-RETURN u.screen_name AS User, t.text AS Tweet, Retweets
-
-
-
 
 
 6. Which other topics could we recommend for a specific user? 
@@ -69,3 +69,7 @@ RETURN tag2.name as Topics, count(*) as Count
 ORDER BY count(*) DESC LIMIT 5
 
 
+
+MATCH (n)
+RETURN n
+LIMIT 1000
