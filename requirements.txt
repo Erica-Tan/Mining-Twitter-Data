@@ -1,2 +1,4 @@
 tweepy
 py2neo
+seaborn
+matplotlib
