@@ -9,22 +9,15 @@ import settings
 import os
 import re
 from os.path import isfile, join
-from matplotlib import pyplot as pp
+from matplotlib import pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
 
-# ---------- EDIT THESE TO CHANGE THE LOG DIRECTORY AND WHERE THE FILES SHOULD BE SAVED ----------------------
-readsavefile= settings.TESTING_PLOT_DIR + "/neo4j-read-vs-throughput"
-updatesavefile= settings.TESTING_PLOT_DIR + "/neo4j-update-vs-throughput"
-throughputsavefile= settings.TESTING_PLOT_DIR + "/neo4j-throughput-vs-throughput"
 
-colors = [ 'bo--', 'go-', 'ro--', 'co-', 'mo--', 'yo-', 'ko--','bo-', 'go--', 'ro-', 'co--', 'mo-', 'yo--', 'ko-' ]
-maxth=0
-maxrl=0
-maxul=0
-maxdt=0
 
-def readFiles():
-	global maxth, maxrl, maxul, maxdt	
-	cwd = settings.YCSB_LOGS_DIR
+def readFiles(floder):	
+	cwd = settings.YCSB_LOGS_DIR+'/'+floder
 	lst = {}
 	for f in os.listdir(cwd):
 		fpath = join(cwd,f)
@@ -35,87 +28,38 @@ def readFiles():
 			otregex = re.compile("^\[OVERALL.*Throughput.*",re.M);
 			ulregex = re.compile("^\[UPDATE.*AverageLatency.*",re.M);
 			rlregex = re.compile("^\[READ.*AverageLatency.*",re.M);
+			rtregex = re.compile("^\[OVERALL.*RunTime.*",re.M);
 			strfile = open(fpath,"r").read()
 			otline  = otregex.search(strfile)
 			ulline  = ulregex.search(strfile)
 			rlline  = rlregex.search(strfile)
-			throughput, ulatency, rlatency = float(otline.group(0).split(",")[2]), float(ulline.group(0).split(",")[2]), float(rlline.group(0).split(",")[2])
-			if not dthread in dict.keys(lst):
-				lst[dthread] = {}
+			rtline  = rtregex.search(strfile)
+			
+			throughput = float(otline.group(0).split(",")[2])
+			runtime = float(rtline.group(0).split(",")[2])
+			ulatency = float(ulline.group(0).split(",")[2]) if ulline else 0
+			rlatency = float(rlline.group(0).split(",")[2]) if rlline else 0
+				
+			if not dtype in dict.keys(lst):
+				lst[dtype] = {}
 								
-			lst[dthread][dthroughput] = [ulatency,rlatency,throughput]		
-			if throughput > maxth:
-				maxth = throughput
-			if ulatency > maxul:
-				maxul = ulatency
-			if rlatency > maxrl:
-				maxrl = rlatency
-			if dthroughput > maxdt:
-				maxdt = dthroughput
+			lst[dtype][dthroughput] = [ulatency,rlatency,throughput,runtime]		
+
 	
 	nlst = {}
-	for thread in lst:
-		nlst[thread] = []
-		for i in range(0,4):
-			nlst[thread].append([])
-		for th in sorted(lst[thread]):
-			nlst[thread][0].append(th)
-			nlst[thread][1].append(lst[thread][th][0])
-			nlst[thread][2].append(lst[thread][th][1])
-			nlst[thread][3].append(lst[thread][th][2])
+	for dtype in lst:
+		nlst[dtype] = []
+		for i in range(0,5):
+			nlst[dtype].append([])
+		for th in sorted(lst[dtype]):
+			nlst[dtype][0].append(th)
+			nlst[dtype][1].append(lst[dtype][th][0])
+			nlst[dtype][2].append(lst[dtype][th][1])
+			nlst[dtype][3].append(lst[dtype][th][2])
+			nlst[dtype][4].append(lst[dtype][th][3])
 			
 	
 	return nlst
-
-
-def createReadLatencyGraph(data):
-	
-	pp.figure(1)
-	count=0
-	for thread in sorted(data.keys()):
-		pp.plot(data[thread][3],data[thread][2],colors[count],label="Threads = "+str(thread))
-		count+=1
-	pp.grid(axis='both')
-	pp.xlabel('Achieved Throughput (operations/second)')
-	pp.ylabel('Average Read Latency (milliseconds)')
-	pp.axis([0, 1.1 * maxth , 0, 1.1*maxrl ])
-	pp.title('HBase Read Latency vs Achieved Throughput at different number of threads for 300000 operations and 25000000 record count')
-	pp.legend(loc=2)
-	#pp.show()
-	save(readsavefile)
-
-def createUpdateLatencyGraph(data):
-
-	pp.figure(2)
-	count=0
-	for thread in sorted(data.keys()):
-		pp.plot(data[thread][3],data[thread][1],colors[count],label="Threads = "+str(thread))
-		count+=1
-	pp.grid(axis='both')
-	pp.xlabel('Overall Achieved Throughput (operations/second)')
-	pp.ylabel('Average Update Latency (milliseconds)')
-	pp.axis([0, 1.1 * maxth , 0, 1.5*maxul ])
-	pp.title('HBase Update Latency vs Achieved Throughput at different number of threads for 300000 operations and 25000000 record count')
-	pp.legend(loc=2)
-	#pp.show()
-	save(updatesavefile)
-
-def createThroughputGraph(data):
-
-	pp.figure(3)
-	count=0
-	for thread in sorted(data.keys()):
-		pp.plot(data[thread][0],data[thread][3],colors[count],label="Threads = "+str(thread))
-		count+=1
-	pp.grid(axis='both')
-	pp.xlabel('Target Throughput (operations/second)')
-	pp.ylabel('Overall Achieved Throughput (operations/second)')
-	pp.axis([0, 1.1*maxdt , 0, 1.1*maxth ])
-	pp.title('HBase Achieved Throughput vs Target Throughput at different number of threads for 300000 operations and 25000000 record count')
-	pp.legend(loc=2)
-	#pp.show()
-	save(throughputsavefile)
-
 
 #This function saves the plot in a file
 #This is contributed by Siddharth Goel (National University of Singapore)
@@ -137,30 +81,168 @@ def save(path, ext='png', close=True, verbose=True):
 	if verbose:
 		print("Saving figure to '%s'..." % savepath)
 
-	pp.gcf().set_size_inches(18.5,10.5)
+	#pp.gcf().set_size_inches(18.5,10.5)
 
-        # Actually save the figure
-	pp.savefig(savepath, figsize=(50, 40), dpi=80)
+	# Actually save the figure
+	#pp.savefig(savepath, figsize=(50, 40), dpi=80)
+
+	plt.savefig(savepath)
 
 	# Close it
 	if close:
-		pp.close()
+		plt.close()
 
 	if verbose:
 		print("Done")
 
-def main():
-	#Read the log files
-	data = readFiles()
+def createlineGraph(data, xlabel, ylabel, title, filename, key):
 
-	#print(data)
-	#Create the read latecy vs throughput graph
-	createReadLatencyGraph(data)
-	#Create update latency vs throughput graph
-	createUpdateLatencyGraph(data)
-	#Create achieved throughput vs desired throughput graph
-	createThroughputGraph(data)
+	sns.set_style("darkgrid")
+
+	results = {'x': [], 'y': [], 'Databases':[]}
+
+	for dtype in sorted(data.keys()):
+		
+		results['x'].extend(data[dtype][0])
+		results['y'].extend(data[dtype][key])
+		results['Databases'].extend([dtype for i in range(len(data[dtype][0]))])
+				
+
+	df = pd.DataFrame(results)
+
+	ax = sns.pointplot(x="x", y="y", hue="Databases", data=df)
+	plt.xlabel(xlabel)
+	plt.ylabel(ylabel)
+	plt.title(title)
+	#plt.show()
+
+	save(settings.TESTING_PLOT_DIR + '/'+filename)
+
+
+def createBarGraph(data, ylabel, title, filename, key):
+
+	results = {'database':[], 'performance':[]}
+
+	for dtype in sorted(data.keys()):
+		results['database'].append(dtype)
+		results['performance'].append(data[dtype][key][0])
+
+
+	sns.set(font_scale=1.5)
+	sns.barplot(x='database', y='performance', data=results)
+	
+
+	pp.ylabel(ylabel)
+	pp.title(title)
+	#pp.show()
+
+	save(settings.TESTING_PLOT_DIR + '/'+filename)
+
+
+
+def main():
+
+	#Read the log files
+	data = readFiles('workloada')
+
+
+	xlabel = 'Target Throughput (ops/sec)'
+	ylabel = 'Average Update Latency (us)'
+	title = 'Update Latency - Workload A'
+	filename = 'update_latency_workloada_line'
+	key = 1
+	
+	createlineGraph(data, xlabel, ylabel, title, filename, key)
+
+
+	xlabel = 'Target Throughput (ops/sec)'
+	ylabel = 'Average Read Latency (us)'
+	title = 'Read Latency - Workload A'
+	filename = 'read_latency_workloada_line'
+	key = 2
+	
+	createlineGraph(data, xlabel, ylabel, title, filename, key)
+
+	xlabel = 'Target Throughput (ops/sec)'
+	ylabel = 'Overall Throughput (ops/sec)'
+	title = 'Throughput - Workload A'
+	filename = 'throughput_workloada_line'
+	key = 3
+	
+	createlineGraph(data, xlabel, ylabel, title, filename, key)
+
+
+	xlabel = 'Target Throughput (ops/sec)'
+	ylabel = 'Overall Runtime (ms)'
+	title = 'Runtime - Workload A'
+	filename = 'runtime_workloada_line'
+	key = 4
+
+	createlineGraph(data, xlabel, ylabel, title, filename, key)
+
+	'''
+	#Read the log files
+	data = readFiles('workloadc')
+
+	xlabel = 'Target Throughput (ops/sec)'
+	ylabel = 'Average Read Latency (us)'
+	title = 'Read Latency - Workload C'
+	filename = 'read_latency_workloadc_line'
+	key = 2
+	
+	createlineGraph(data, xlabel, ylabel, title, filename, key)
+
+	xlabel = 'Target Throughput (ops/sec)'
+	ylabel = 'Overall Throughput (ops/sec)'
+	title = 'Throughput - Workload C'
+	filename = 'throughput_workloadc_line'
+	key = 3
+	
+	createlineGraph(data, xlabel, ylabel, title, filename, key)
+
+
+	xlabel = 'Target Throughput (ops/sec)'
+	ylabel = 'Overall Runtime (ms)'
+	title = 'Runtime - Workload C'
+	filename = 'runtime_workloadc_line'
+	key = 4
+	
+	createlineGraph(data, xlabel, ylabel, title, filename, key)
+
+	
+
+	#Read the log files
+	data = readFiles('workloadg')
+	
+	xlabel = 'Target Throughput (ops/sec)'
+	ylabel = 'Average Insert Latency (us)'
+	title = 'Insert Latency - Workload G'
+	filename = 'insert_latency_workloadg_line'
+	key = 2
+	
+	createlineGraph(data, xlabel, ylabel, title, filename, key)
+
+	xlabel = 'Target Throughput (ops/sec)'
+	ylabel = 'Overall Throughput (ops/sec)'
+	title = 'Throughput - Workload G'
+	filename = 'throughput_workloadg_line'
+	key = 3
+	
+	createlineGraph(data, xlabel, ylabel, title, filename, key)
+
+	xlabel = 'Target Throughput (ops/sec)'
+	ylabel = 'Overall Runtime (ms)'
+	title = 'Runtime - Workload G'
+	filename = 'runtime_workloadg_line'
+	key = 4
+	
+	createlineGraph(data, xlabel, ylabel, title, filename, key)
+	'''
+
+
 
 if __name__=="__main__":
 	main()
+
+
 

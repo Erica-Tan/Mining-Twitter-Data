@@ -1,115 +1,85 @@
 echo "neo4j YCSB Workload Generator"
 
+
 SET NUMBER_OF_OPERATIONS=75000
-SET NUMBER_OF_THREADS=10
-SET TARGET_1=1000
-SET TARGET_2=2000
-SET TARGET_3=3000
-SET TARGET_4=4000
-SET TARGET_5=5000
-SET TARGET_6=6000
-SET TARGET_7=7000
-SET TARGET_8=8000
-SET TARGET_9=9000
-SET TARGET_10=10000
+set TARGETS=1000,2000,3000,4000,5000,6000,7000,8000,9000,10000
+
+
+rem SET NUMBER_OF_OPERATIONS=1000000
+
+rem set TARGETS=1000,2000,4000,8000,16000,32000,64000,128000,256000,512000
+
+set NUMBER_OF_THREADS=1,2,5,10,25,50,100,200,500,1000
 
 
 
 SET WORKLOAD_TYPE=a
 
-echo "Loading workload "%WORKLOAD_TYPE%"......."
+FOR %%a in (%TARGETS%) do (
+  FOR %%b in (%NUMBER_OF_THREADS% %%a) DO (
 
-python ../bin/ycsb load neo4j -s -P workloads/workload%WORKLOAD_TYPE%  -p recordcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% > logs/outputLoada.txt
+    echo "Loading workload "%WORKLOAD_TYPE%"......."
 
-echo "Finished loading workload "%WORKLOAD_TYPE%""
+    python ../bin/ycsb load neo4j -s -P workloads/workload%WORKLOAD_TYPE%  -p recordcount=%NUMBER_OF_OPERATIONS% -threads %%b > logs/outputLoada%%a_%%b_%WORKLOAD_TYPE%.txt
 
-echo "EXECUTING WORKLOAD "%WORKLOAD_TYPE%"......"
+    echo "Finished loading workload "%WORKLOAD_TYPE%""
 
-
-python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_1% > logs/neo4jrun%TARGET_1%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
-
-TIMEOUT 20
-python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_2% > logs/neo4jrun%TARGET_2%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
-
-TIMEOUT 20
-python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_3% > logs/neo4jrun%TARGET_3%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
-
-TIMEOUT 20
-python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_4% > logs/neo4jrun%TARGET_4%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
-
-TIMEOUT 20
-python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_6% > logs/neo4jrun%TARGET_6%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
-
-TIMEOUT 20
-python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_7% > logs/neo4jrun%TARGET_7%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
-
-TIMEOUT 20
-python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_8% > logs/neo4jrun%TARGET_8%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
-
-TIMEOUT 20
-python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_5% > logs/neo4jrun%TARGET_5%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
-
-TIMEOUT 20
-python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_9% > logs/neo4jrun%TARGET_9%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
-
-TIMEOUT 20
-python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_10% > logs/neo4jrun%TARGET_10%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
+    echo "EXECUTING WORKLOAD "%WORKLOAD_TYPE%"......"
 
 
+    python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %%b -target %%a > logs/neo4jrun%%a_%%b_%WORKLOAD_TYPE%.out
+
+	  TIMEOUT 20
 
 
-echo "FINISHED WORKLOAD "%WORKLOAD_TYPE%"......"
+    echo "FINISHED WORKLOAD "%WORKLOAD_TYPE%"......"
+  )
+)
 
 
+SET WORKLOAD_TYPE=c
+
+FOR %%a in (%TARGETS%) do (
+  FOR %%b in (%NUMBER_OF_THREADS% %%a) DO (
+
+    echo "Loading workload "%WORKLOAD_TYPE%"......."
+
+    python ../bin/ycsb load neo4j -s -P workloads/workload%WORKLOAD_TYPE%  -p recordcount=%NUMBER_OF_OPERATIONS% -threads %%b > logs/outputLoada%%a_%%b_%WORKLOAD_TYPE%.txt
+
+    echo "Finished loading workload "%WORKLOAD_TYPE%""
+
+    echo "EXECUTING WORKLOAD "%WORKLOAD_TYPE%"......"
 
 
+    python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %%b -target %%a > logs/neo4jrun%%a_%%b_%WORKLOAD_TYPE%.out
+
+    TIMEOUT 20
 
 
-
-rem SET WORKLOAD_TYPE=b
-
-rem echo "Loading workload "%WORKLOAD_TYPE%"......."
-
-rem python ../bin/ycsb load neo4j -s -P workloads/workload%WORKLOAD_TYPE%  -p recordcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% > logs/outputLoada.txt
+    echo "FINISHED WORKLOAD "%WORKLOAD_TYPE%"......"
+  )
+)
 
 
-rem TIMEOUT 20
+SET WORKLOAD_TYPE=g
 
-rem echo "Finished loading workload "%WORKLOAD_TYPE%""
+FOR %%a in (%TARGETS%) do (
+  FOR %%b in (%NUMBER_OF_THREADS% %%a) DO (
 
-rem echo "EXECUTING WORKLOAD "%WORKLOAD_TYPE%"......"
+    echo "Loading workload "%WORKLOAD_TYPE%"......."
 
+    python ../bin/ycsb load neo4j -s -P workloads/workload%WORKLOAD_TYPE%  -p recordcount=%NUMBER_OF_OPERATIONS% -threads %%b > logs/outputLoada%%a_%%b_%WORKLOAD_TYPE%.txt
 
-rem python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_1% > logs/neo4jrun%TARGET_1%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
+    echo "Finished loading workload "%WORKLOAD_TYPE%""
 
-rem TIMEOUT 20
-rem python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_2% > logs/neo4jrun%TARGET_2%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
-
-rem TIMEOUT 20
-rem python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_3% > logs/neo4jrun%TARGET_3%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
-
-rem TIMEOUT 20
-rem python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_4% > logs/neo4jrun%TARGET_4%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
-
-rem TIMEOUT 20
-rem python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_6% > logs/neo4jrun%TARGET_6%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
-
-rem TIMEOUT 20
-rem python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_7% > logs/neo4jrun%TARGET_7%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
-
-rem TIMEOUT 20
-rem python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_8% > logs/neo4jrun%TARGET_8%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
-
-rem TIMEOUT 20
-rem python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_5% > logs/neo4jrun%TARGET_5%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
-
-rem TIMEOUT 20
-rem python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_9% > logs/neo4jrun%TARGET_9%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
-
-rem TIMEOUT 20
-rem python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %NUMBER_OF_THREADS% -target %TARGET_10% > logs/neo4jrun%TARGET_10%_%NUMBER_OF_THREADS%_%WORKLOAD_TYPE%.out
+    echo "EXECUTING WORKLOAD "%WORKLOAD_TYPE%"......"
 
 
+    python ../bin/ycsb run neo4j -s -P workloads/workload%WORKLOAD_TYPE% -p operationcount=%NUMBER_OF_OPERATIONS% -threads %%b -target %%a > logs/neo4jrun%%a_%%b_%WORKLOAD_TYPE%.out
+
+    TIMEOUT 20
 
 
-rem echo "FINISHED WORKLOAD "%WORKLOAD_TYPE%"......"
+    echo "FINISHED WORKLOAD "%WORKLOAD_TYPE%"......"
+  )
+)
