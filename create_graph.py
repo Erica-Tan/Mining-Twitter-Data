@@ -116,7 +116,7 @@ def createlineGraph(data, xlabel, ylabel, title, filename, key):
 	plt.title(title)
 	#plt.show()
 
-	save(settings.TESTING_PLOT_DIR + '/'+filename)
+	save(settings.FIGURE_DIR + '/'+filename)
 
 
 def createBarGraph(data, ylabel, title, filename, key):
@@ -136,7 +136,7 @@ def createBarGraph(data, ylabel, title, filename, key):
 	pp.title(title)
 	#pp.show()
 
-	save(settings.TESTING_PLOT_DIR + '/'+filename)
+	save(settings.FIGURE_DIR + '/'+filename)
 
 
 

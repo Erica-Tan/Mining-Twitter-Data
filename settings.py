@@ -5,7 +5,7 @@ ACCESS_SECRET = ""
 DATA_DIR = "data"
 NEO4J_IP = "localhost"
 YCSB_LOGS_DIR = "ASRL-YCSB/scripts/logs"
-TESTING_PLOT_DIR = "figures"
+FIGURE_DIR = "figures"
 
 try:
 	from private import *
