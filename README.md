@@ -20,7 +20,7 @@ Usage
 -----------------------
 
 * Run `twitter_streaming.py`
-    * This will create 20 Json files in the `data` folder and each file has 5 housand records.
+    * This will create 20 Json files in the `data` folder and each file has 50 thousand records.
 * Run `twitter_neo4j.py`
     * This will iterate all Json files in the `data` folder and execute cypher query to import data.
 * Run `ASRL-YCSB\scriptst\Neo4j_workloads.bat`
