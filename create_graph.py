@@ -3,7 +3,6 @@
 #XXXX - DBName
 #YYYY - Desired Throughput
 #ZZZZ - Threads
-#Author - Naman Aggarwal
 
 import settings
 import os
