@@ -13,8 +13,6 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
-
-
 def readFiles(floder):	
 	cwd = settings.YCSB_LOGS_DIR+'/'+floder
 	lst = {}
@@ -61,9 +59,7 @@ def readFiles(floder):
 	return nlst
 
 #This function saves the plot in a file
-#This is contributed by Siddharth Goel (National University of Singapore)
 def save(path, ext='png', close=True, verbose=True):
-
 	# Extract the directory and filename from the given path
 	directory = os.path.split(path)[0]
 	filename = "%s.%s" % (os.path.split(path)[1], ext)
@@ -80,11 +76,6 @@ def save(path, ext='png', close=True, verbose=True):
 	if verbose:
 		print("Saving figure to '%s'..." % savepath)
 
-	#pp.gcf().set_size_inches(18.5,10.5)
-
-	# Actually save the figure
-	#pp.savefig(savepath, figsize=(50, 40), dpi=80)
-
 	plt.savefig(savepath)
 
 	# Close it
@@ -95,7 +86,6 @@ def save(path, ext='png', close=True, verbose=True):
 		print("Done")
 
 def createlineGraph(data, xlabel, ylabel, title, filename, key):
-
 	sns.set_style("darkgrid")
 
 	results = {'x': [], 'y': [], 'Databases':[]}
@@ -106,7 +96,6 @@ def createlineGraph(data, xlabel, ylabel, title, filename, key):
 		results['y'].extend(data[dtype][key])
 		results['Databases'].extend([dtype for i in range(len(data[dtype][0]))])
 				
-
 	df = pd.DataFrame(results)
 
 	ax = sns.pointplot(x="x", y="y", hue="Databases", data=df)
@@ -119,18 +108,15 @@ def createlineGraph(data, xlabel, ylabel, title, filename, key):
 
 
 def createBarGraph(data, ylabel, title, filename, key):
-
 	results = {'database':[], 'performance':[]}
 
 	for dtype in sorted(data.keys()):
 		results['database'].append(dtype)
 		results['performance'].append(data[dtype][key][0])
 
-
 	sns.set(font_scale=1.5)
 	sns.barplot(x='database', y='performance', data=results)
 	
-
 	pp.ylabel(ylabel)
 	pp.title(title)
 	#pp.show()
@@ -140,26 +126,21 @@ def createBarGraph(data, ylabel, title, filename, key):
 
 
 def main():
-
 	#Read the log files
 	data = readFiles('workloada')
-
 
 	xlabel = 'Target Throughput (ops/sec)'
 	ylabel = 'Average Update Latency (us)'
 	title = 'Update Latency - Workload A'
 	filename = 'update_latency_workloada_line'
 	key = 1
-	
 	createlineGraph(data, xlabel, ylabel, title, filename, key)
-
 
 	xlabel = 'Target Throughput (ops/sec)'
 	ylabel = 'Average Read Latency (us)'
 	title = 'Read Latency - Workload A'
 	filename = 'read_latency_workloada_line'
 	key = 2
-	
 	createlineGraph(data, xlabel, ylabel, title, filename, key)
 
 	xlabel = 'Target Throughput (ops/sec)'
@@ -167,16 +148,13 @@ def main():
 	title = 'Throughput - Workload A'
 	filename = 'throughput_workloada_line'
 	key = 3
-	
 	createlineGraph(data, xlabel, ylabel, title, filename, key)
-
 
 	xlabel = 'Target Throughput (ops/sec)'
 	ylabel = 'Overall Runtime (ms)'
 	title = 'Runtime - Workload A'
 	filename = 'runtime_workloada_line'
 	key = 4
-
 	createlineGraph(data, xlabel, ylabel, title, filename, key)
 
 	'''
@@ -188,7 +166,6 @@ def main():
 	title = 'Read Latency - Workload C'
 	filename = 'read_latency_workloadc_line'
 	key = 2
-	
 	createlineGraph(data, xlabel, ylabel, title, filename, key)
 
 	xlabel = 'Target Throughput (ops/sec)'
@@ -196,19 +173,14 @@ def main():
 	title = 'Throughput - Workload C'
 	filename = 'throughput_workloadc_line'
 	key = 3
-	
 	createlineGraph(data, xlabel, ylabel, title, filename, key)
-
 
 	xlabel = 'Target Throughput (ops/sec)'
 	ylabel = 'Overall Runtime (ms)'
 	title = 'Runtime - Workload C'
 	filename = 'runtime_workloadc_line'
 	key = 4
-	
 	createlineGraph(data, xlabel, ylabel, title, filename, key)
-
-	
 
 	#Read the log files
 	data = readFiles('workloadg')
@@ -218,7 +190,6 @@ def main():
 	title = 'Insert Latency - Workload G'
 	filename = 'insert_latency_workloadg_line'
 	key = 2
-	
 	createlineGraph(data, xlabel, ylabel, title, filename, key)
 
 	xlabel = 'Target Throughput (ops/sec)'
@@ -226,7 +197,6 @@ def main():
 	title = 'Throughput - Workload G'
 	filename = 'throughput_workloadg_line'
 	key = 3
-	
 	createlineGraph(data, xlabel, ylabel, title, filename, key)
 
 	xlabel = 'Target Throughput (ops/sec)'
@@ -234,14 +204,8 @@ def main():
 	title = 'Runtime - Workload G'
 	filename = 'runtime_workloadg_line'
 	key = 4
-	
 	createlineGraph(data, xlabel, ylabel, title, filename, key)
 	'''
 
-
-
 if __name__=="__main__":
 	main()
-
-
-

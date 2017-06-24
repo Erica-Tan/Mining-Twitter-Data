@@ -4,9 +4,6 @@ import os
 import settings
 from py2neo import Graph, authenticate
  
-#Property values can only be of primitive types or arrays thereof
- 
- 
 query = """
 UNWIND {json} AS t
 MERGE (tweet:Tweet {id:t.id}) ON CREATE
@@ -61,13 +58,11 @@ user.notifications = t.user.notifications
 MERGE (user)-[:POSTS]->(tweet)
 
 
-
 FOREACH (s IN (CASE WHEN t.source_name = '' THEN [] ELSE [t.source_name] END ) |
     MERGE (source:Source {name:s}) ON CREATE
     SET source.url = t.source_url
     MERGE (tweet)-[:USING]->(source)
 )
-
 
 FOREACH (p IN t.place |
     MERGE (place:Place {id:p.id}) ON CREATE
@@ -80,12 +75,10 @@ FOREACH (p IN t.place |
     MERGE (place)-[:PLACES]->(tweet)
 )
 
-
 FOREACH (h IN t.entities.hashtags |
     MERGE (tag:Hashtag {name:LOWER(h.text)})
     MERGE (tag)-[:TAGS]->(tweet)
 )
-
 
 FOREACH (l IN t.entities.urls |
     FOREACH(value IN (CASE WHEN l.url = '' THEN [] ELSE [l.url] END) |
@@ -95,8 +88,6 @@ FOREACH (l IN t.entities.urls |
         MERGE (tweet)-[:CONTAINS]->(link)
     )
 )
-
-
 
 FOREACH (qt IN t.quoted_status |
     MERGE (qtweet:Tweet {id:qt.id}) ON CREATE
@@ -151,14 +142,11 @@ FOREACH (qt IN t.quoted_status |
     quser.notifications = qt.user.notifications
     MERGE (quser)-[:POSTS]->(qtweet)
 
-
-
     FOREACH (s IN (CASE WHEN qt.source_name = '' THEN [] ELSE [qt.source_name] END ) |
         MERGE (qsource:Source {name:s}) ON CREATE
         SET qsource.url = qt.source_url
         MERGE (tweet)-[:USING]->(qsource)
     )
-
 
     FOREACH (p IN qt.place |
         MERGE (qplace:Place {id:p.id}) ON CREATE
@@ -186,12 +174,7 @@ FOREACH (qt IN t.quoted_status |
             MERGE (tweet)-[:CONTAINS]->(qlink)
         )
     )
-
-
 )
-
-
-
 
 FOREACH (rt IN t.retweeted_status |
     MERGE (rtweet:Tweet {id:rt.id}) ON CREATE
@@ -253,8 +236,6 @@ FOREACH (rt IN t.retweeted_status |
         MERGE (tweet)-[:USING]->(rsource)
     )
 
-
-
     FOREACH (p IN rt.place |
         MERGE (rplace:Place {id:p.id}) ON CREATE
         SET rplace.url = p.url,
@@ -266,12 +247,10 @@ FOREACH (rt IN t.retweeted_status |
         MERGE (rplace)-[:PLACES]->(tweet)
     )
 
-
     FOREACH (h IN rt.entities.hashtags |
         MERGE (rtag:Hashtag {name:LOWER(h.text)})
         MERGE (rtag)-[:TAGS]->(tweet)
     )
-
 
     FOREACH (l IN rt.entities.urls |
         FOREACH(value IN (CASE WHEN l.url = '' THEN [] ELSE [l.url] END) |
@@ -296,9 +275,10 @@ MERGE (tweet)-[:PRPLYTO]->(rptweet)
 """
 
 
-# connect neo4j
+# Connect neo4j
 graph = Graph("http://neo4j:123456@"+settings.NEO4J_IP+":7474")
 
+# Iterate all files and excute the cupher query
 with open('filename.txt') as data_file:
     filenames = ast.literal_eval(data_file.readline())
     
@@ -306,21 +286,6 @@ for filename in filenames:
     with open(os.path.join(settings.DATA_DIR, 'twitter'+filename+'.json')) as data_file:
         tweet = json.load(data_file)
 
-
     # Send Cypher query.
     graph.run(query, json = tweet)
     #graph.run(query, json = tweet).dump()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
