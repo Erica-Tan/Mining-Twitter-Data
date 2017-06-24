@@ -9,7 +9,7 @@ Installation
  
 * Install the requirements using `pip install -r requirements.txt`.
     * Make sure you use Python 3.
-* Run `mkdir private.py` and set the following keys (gain from Twitter API) in this file
+* Create a file called `private.py` and set the following keys (gain from Twitter API) in this file.
 	* CUSTOMER_KEY
 	* CUSTOMER_SECRET
 	* ACCESS_TOKEN
